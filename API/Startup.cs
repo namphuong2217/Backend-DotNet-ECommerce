@@ -1,3 +1,5 @@
+using API.Helpers;
+using AutoMapper;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
@@ -10,7 +12,7 @@ using Microsoft.OpenApi.Models;
 
 namespace API
 {
-    // Config class
+    // Config class like Spring Configuration Bean
     public class Startup
     {
         private readonly IConfiguration _config;
@@ -24,6 +26,8 @@ namespace API
         {
             // much like Spring Bean
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), (typeof(GeneritcRepository<>)));
+            services.AddAutoMapper(typeof(MappingProfiles));
             services.AddControllers();
             // lifetime method
             services.AddDbContext<StoreContext>(x => 
@@ -48,6 +52,7 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 
