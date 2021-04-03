@@ -20,6 +20,7 @@ import { HomeModule } from './home/home.module';
     HttpClientModule,
 
     CoreModule,
+    // ShopModule,
     HomeModule
   ],
   providers: [],
