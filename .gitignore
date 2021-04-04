@@ -2,7 +2,7 @@ obj
 bin
 appsettings.json 
 *.db 
-
+*.rdb
 
 
 # ## Ignore Visual Studio temporary files, build results, and
