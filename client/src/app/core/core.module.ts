@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { TestErrorComponent } from './test-error/test-error.component';
 import { SectionHeaderComponent } from './section-header/section-header.component';
 import { BreadcrumbModule } from 'xng-breadcrumb';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -13,7 +14,8 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
   imports: [
     CommonModule,
     RouterModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    SharedModule
   ],
   exports: [NavBarComponent, 
     SectionHeaderComponent]
