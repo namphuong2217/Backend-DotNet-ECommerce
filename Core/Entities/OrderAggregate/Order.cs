@@ -22,6 +22,7 @@ namespace Core.Entities.OrderAggregate
         public string BuyerEmail { get; set; }
         // standard time
         public DateTimeOffset OrderDate { get; set; } = DateTimeOffset.Now;
+        // Address owned by Order
         public Address ShipToAddress { get; set; }
         public DeliveryMethod DeliveryMethod { get; set; }
         public IReadOnlyList<OrderItem> OrderItems { get; set; }
