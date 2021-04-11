@@ -37,7 +37,7 @@ Environment used:
 
 * API-Core-Infrastructure architecture
 
-![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/ApplicationArchitecture.png)
+![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/ApplicationArchitecture1.png)
 
 The application is built in 3 layer architecture: [API Project](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/API), [Core Project](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core), [Infrastructure Project](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Infrastructure)
 
@@ -47,23 +47,23 @@ The application is built in 3 layer architecture: [API Project](https://github.c
 
 Code organized as follows:
 
-1. [``API Project``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/API) responsible [handlers/controllers](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/API/Controllers) for coming requests from client
+1. [``API Project``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/API) responsible for [handlers/controllers](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/API/Controllers) for coming requests from client
 2. [``Core Project``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core) responsible for entities/data models.
 3. [``Infrastructure Project``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Infrastructure) responsible for accessing database and processing data
 4. [``Entities``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core/Entities), [``DTOs``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/API/Dtos)
 5. [``Auto Mapper``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Helpers/MappingProfiles.cs) map entities and DTOs
-6. [``Repository Pattern``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Core/Interfaces/IGenericRepository.cs) decouple code from data access, minimize duplicate query logic 
+6. ``Repository Pattern`` decouple code from data access, minimize duplicate query logic 
 [``IGenericRepository``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Core/Interfaces/IGenericRepository.cs)
 [``GenericRepository``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Infrastructure/Data/GenericRepository.cs)
-6. [``Specification Pattern``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core/Specifications) along with [``Repository Pattern``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Core/Interfaces/IGenericRepository.cs) to describe query in an object and implement advanced queries like OrderBy, Asc/Desc, Sorting on client's side
-7. [``Unit Of Work pattern``] handles complex query involving more than one data table in database
+6. [``Specification Pattern``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core/Specifications) along with ``Repository Pattern`` to describe query in an object and implement advanced queries like OrderBy, Asc/Desc, Sorting on client's side
+7. ``Unit Of Work pattern`` handles complex query involving more than one data table in database
 [``UnitOfWork Interface``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Core/Interfaces/IUnitOfWork.cs)
 [``UnitOfWork Implementation``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Infrastructure/Data/UnitOfWork.cs)
 8. Use Redis in memory database to manage user basket/shopping cart functionality [``BasketController``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Controllers/BasketController.cs), [``BasketRepository``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Infrastructure/Data/BasketRepository.cs)
 
 ## Security
 
-Implement [``User Identity``] with ASPNET Framework user manager package [``AppUser``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core/Entities/Identity), [``UserManagerExtensions``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Extensions/UserManagerExtensions.cs), [``AccountController``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Controllers/AccountController.cs)
+Implement ``User Identity`` with ASPNET Framework user manager package [``AppUser``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core/Entities/Identity), [``UserManagerExtensions``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Extensions/UserManagerExtensions.cs), [``AccountController``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Controllers/AccountController.cs)
 
 
 ## Database
