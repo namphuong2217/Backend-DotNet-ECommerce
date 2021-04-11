@@ -2,7 +2,7 @@ using Core.Entities.OrderAggregate;
 
 namespace API.Dtos
 {
-    // orderItems returned as DTO as screenshot
+    // flat 1 OrderItem and shape data
     public class OrderItemDto
     {
         public int ProductId { get; set; }

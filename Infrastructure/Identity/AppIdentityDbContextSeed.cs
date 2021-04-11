@@ -13,14 +13,6 @@ namespace Infrastructure.Identity
                     DisplayName = "Bob",
                     Email = "bob@test.com",
                     UserName = "bob@test.com",
-                    Address = new Address{
-                        FirstName = "Bob",
-                        LastName = "Bobbity",
-                        Street = "10 The Street",
-                        City = "New York",
-                        State = "NY",
-                        ZipCode = "90201"
-                    }
                 };
 
                 await userManager.CreateAsync(user, "Pa$$w0rd");

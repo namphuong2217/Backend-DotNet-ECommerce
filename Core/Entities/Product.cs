@@ -1,6 +1,5 @@
 namespace Core.Entities
 {
-    // Product has relationship with ProductType and ProductBrand
     public class Product : BaseEntity
     {
         public string Name { get; set; }

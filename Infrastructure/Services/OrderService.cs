@@ -10,6 +10,7 @@ namespace Infrastructure.Services
 {
     public class OrderService : IOrderService
     {
+        // Basket Repository is managed by Redis
         private readonly IBasketRepository _basketRepo;
         private readonly IUnitOfWork _unitOfWork;
         public OrderService(IBasketRepository basketRepo, IUnitOfWork unitOfWork)
@@ -18,7 +19,9 @@ namespace Infrastructure.Services
             _basketRepo = basketRepo;
         }
 
-        public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Address shippingAddress)
+
+
+        public async Task<Order> CreateOrderAsync(string buyerEmail, string basketId)
         {
             // 1 get basket from the repo
             var basket = await _basketRepo.GetBasketAsync(basketId);
@@ -28,39 +31,30 @@ namespace Infrastructure.Services
             {
                 var productItem = await _unitOfWork.Repository<Product>().GetByIdAsync(item.Id);
                 var itemOrdered = new ProductItemOrdered(productItem.Id, productItem.Name, productItem.PictureUrl);
+                // seperate product Price because we need to retrieve it from databas for validation
                 var orderItem = new OrderItem(itemOrdered, productItem.Price, item.Quantity);
                 items.Add(orderItem);
             }
-
-            // 3 get delivery method from repo
-            var deliveryMethod = await _unitOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
-
-            // 4 calculate subtotal
-            var subtotal = items.Sum(item => item.Price * item.Quantity);
+            // 4 calculate total
+            var total = items.Sum(item => item.Price * item.Quantity);
 
             // 5 create order 
-            var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subtotal);
-            // UnitOfWork
+            var order = new Order(items, buyerEmail, total);
+            // UnitOfWork Add new Order 
             _unitOfWork.Repository<Order>().Add(order);
 
             // 6 TODO save to db UnitOfWork
             var result = await _unitOfWork.Complete();
 
-            if (result <= 0) return null;
+            if (result <= 0) return null; // and let the controller response Error
 
-            // delete basket
+            // delete basket as order is completed
             await _basketRepo.DeleteBasketAsync(basketId);
 
             // 7 return order
             return order;
 
         }
-
-        public async Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodsAsync()
-        {
-            return await _unitOfWork.Repository<DeliveryMethod>().ListAllAsync();
-        }
-
         public async Task<Order> GetOrderByIdAsync(int id, string buyerEmail)
         {
             var spec = new OrdersWithItemsAndOrderingSpecification(id, buyerEmail);

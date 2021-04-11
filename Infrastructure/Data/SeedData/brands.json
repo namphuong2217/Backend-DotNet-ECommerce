@@ -1,26 +1,26 @@
 [
   {
     "Id": 1,
-    "Name": "Angular"
+    "BrandName": "Brand A"
   },
   {
     "Id": 2,
-    "Name": "NetCore"
+    "BrandName": "Brand B"
   },
   {
     "Id": 3,
-    "Name": "VS Code"
+    "BrandName": "Brand C"
   },
   {
     "Id": 4,
-    "Name": "React"
+    "BrandName": "Brand D"
   },
   {
     "Id": 5,
-    "Name": "Typescript"
+    "BrandName": "Brand E"
   },
   {
     "Id": 6,
-    "Name": "Redis"
+    "BrandName": "Brand F"
   }
 ]

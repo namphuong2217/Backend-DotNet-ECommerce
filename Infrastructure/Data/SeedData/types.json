@@ -1,18 +1,18 @@
 [
   {
     "Id": 1,
-    "Name": "Boards"
+    "TypeName": "EnginePower"
   },
   {
     "Id": 2,
-    "Name": "Hats"
+    "TypeName": "Varnish"
   },
   {
     "Id": 3,
-    "Name": "Boots"
+    "TypeName": "Wheel"
   },
   {
     "Id": 4,
-    "Name": "Gloves"
+    "TypeName": "Accessory"
   }
 ]

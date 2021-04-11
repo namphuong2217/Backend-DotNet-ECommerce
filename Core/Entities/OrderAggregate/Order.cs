@@ -9,29 +9,20 @@ namespace Core.Entities.OrderAggregate
         {
         }
 
-        public Order(IReadOnlyList<OrderItem> orderItems, string buyerEmail
-        , Address shipToAddress, DeliveryMethod deliveryMethod, decimal subtotal)
+        public Order(IReadOnlyList<OrderItem> orderItems, string buyerEmail,
+        decimal total)
         {
             BuyerEmail = buyerEmail;
-            ShipToAddress = shipToAddress;
-            DeliveryMethod = deliveryMethod;
             OrderItems = orderItems;
-            Subtotal = subtotal;
+            Total = total;
         }
 
         public string BuyerEmail { get; set; }
         // standard time
         public DateTimeOffset OrderDate { get; set; } = DateTimeOffset.Now;
         // Address owned by Order
-        public Address ShipToAddress { get; set; }
-        public DeliveryMethod DeliveryMethod { get; set; }
         public IReadOnlyList<OrderItem> OrderItems { get; set; }
-        public decimal Subtotal { get; set; }
-        public OrderStatus Status { get; set; } = OrderStatus.Pending;
-        public string PaymentIntentId { get; set; }
-        public decimal GetTotal()
-        {
-            return Subtotal + DeliveryMethod.Price;
-        }
+        public decimal Total { get; set; }
+
     }
 }

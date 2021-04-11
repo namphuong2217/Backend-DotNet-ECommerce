@@ -51,18 +51,7 @@ namespace Infrastructure.Data
                     // save all new data to database
                     await context.SaveChangesAsync();
                 }
-
-                if (!context.DeliveryMethods.Any())
-                {
-                    var dmData = File.ReadAllText("../Infrastructure/Data/SeedData/delivery.json");
-                    var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(dmData);
-                    foreach (var item in methods)
-                    {
-                        context.DeliveryMethods.Add(item);
-                    }
-                    // save all new data to database
-                    await context.SaveChangesAsync();
-                }
+               
             }
             catch (Exception ex)
             {

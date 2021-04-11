@@ -11,17 +11,26 @@ namespace API.Helpers
         public MappingProfiles()
         {
             CreateMap<Product, ProductToReturnDto>()
-                .ForMember(d => d.ProductBrand, o => o.MapFrom(s => s.ProductBrand.Name))
-                .ForMember(d => d.ProductType, o => o.MapFrom(s => s.ProductType.Name))
-                .ForMember(d => d.PictureUrl, o => o.MapFrom<ProductUrlResolver>())
-                ;
-            CreateMap<Core.Entities.Identity.Address, AddressDto>().ReverseMap();
+                .ForMember(d => d.ProductBrand, o => o.MapFrom(s => s.ProductBrand.BrandName))
+                .ForMember(d => d.ProductType, o => o.MapFrom(s => s.ProductType.TypeName))
+                .ForMember(d => d.PictureUrl, o => o.MapFrom<ProductUrlResolver>());
+
             CreateMap<CustomerBasketDto, CustomerBasket>();
+
             CreateMap<BasketItemDto, BasketItem>();
 
-            // order API Section 18
-            CreateMap<AddressDto, Core.Entities.OrderAggregate.Address>();
+            CreateMap<Order, OrderToReturnDto>()
+                .ForMember(d => d.DirectAccessToOrdersUrl, o => o.MapFrom<CarConfigurationUrlResolver>());
+            
+            CreateMap<OrderItem, OrderItemDto>()
+                .ForMember(d => d.ProductId, o => o.MapFrom(s => s.ItemOrdered.ProductItemId))
+                .ForMember(d => d.ProductName, o => o.MapFrom(s => s.ItemOrdered.ProductName))
+                .ForMember(d => d.PictureUrl, o => o.MapFrom(s => s.ItemOrdered.PictureUrl))
+                // resolve url  "pictureUrl": "images/products/boot-redis1.png",
+                .ForMember(d => d.PictureUrl, o => o.MapFrom<OrderItemUrlResolver>());
+
             // flat the orderItems": [
+            // from this
             // {
             //     "itemOrdered": {
             //         "productItemId": 4,
@@ -32,10 +41,7 @@ namespace API.Helpers
             //     "quantity": 10,
             //     "id": 1
             // }
-            CreateMap<Order, OrderToReturnDto>()
-            //      shaping data and make mapper smarter
-            //      "deliveryMethod": "Core.Entities.OrderAggregate.DeliveryMethod",
-            //      "shippingPrice": 0,
+            // to this
             //      "orderItems": [
             //     {
             //         "productId": 0,
@@ -44,15 +50,6 @@ namespace API.Helpers
             //         "price": 250,
             //         "quantity": 10
             //     }
-            .ForMember(d => d.DeliveryMethod, o => o.MapFrom(s => s.DeliveryMethod.ShortName))
-            .ForMember(d => d.ShippingPrice, o => o.MapFrom(s => s.DeliveryMethod.Price));
-            CreateMap<OrderItem, OrderItemDto>()
-                .ForMember(d => d.ProductId, o => o.MapFrom(s => s.ItemOrdered.ProductItemId))
-                .ForMember(d => d.ProductName, o => o.MapFrom(s => s.ItemOrdered.ProductName))
-                .ForMember(d => d.PictureUrl, o => o.MapFrom(s => s.ItemOrdered.PictureUrl))
-                // resolve url  "pictureUrl": "images/products/boot-redis1.png",
-                .ForMember(d => d.PictureUrl, o => o.MapFrom<OrderItemUrlResolver>());
-            ;
 
         }
     }

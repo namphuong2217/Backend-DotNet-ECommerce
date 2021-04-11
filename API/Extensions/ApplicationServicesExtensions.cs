@@ -18,11 +18,10 @@ namespace API.Extensions
             // IUnuitOfWork
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            // services.AddScoped<IProductRepository, ProductRepository>();
             // Basket Part
             services.AddScoped<IBasketRepository, BasketRepository>();
             
-            services.AddScoped(typeof(IGenericRepository<>), (typeof(GeneritcRepository<>)));
+            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
 
             services.Configure<ApiBehaviorOptions>(options =>
             {

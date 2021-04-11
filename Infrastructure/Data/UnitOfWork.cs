@@ -9,6 +9,7 @@ namespace Infrastructure.Data
     public class UnitOfWork : IUnitOfWork
     {
         private readonly StoreContext _context;
+        // store 1 -> 100 repository and retrieve when need 1
         private Hashtable _repositories;
         public UnitOfWork(StoreContext context)
         {
@@ -31,15 +32,17 @@ namespace Infrastructure.Data
 
             var type = typeof(TEntity).Name; // get the name of Entity
 
+            // add an instance of a repository to hash table
             if (!_repositories.ContainsKey(type))
             {
-                var repositoryType = typeof(GeneritcRepository<>);
+                var repositoryType = typeof(GenericRepository<>);
                 var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(
-                    typeof(TEntity)), _context);
+                    typeof(TEntity)), _context); // pass the context of Unit Of Work
 
                 _repositories.Add(type, repositoryInstance);
             }
 
+            // retrieve the desired repo
             return (IGenericRepository<TEntity>) _repositories[type];
         }
     }

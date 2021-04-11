@@ -6,6 +6,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 // import { RouterModule } from '@angular/router';
 import { ShopRoutingModule } from './shop-routing.module';
+import { BasketComponent } from '../basket/basket.component';
+import { BasketModule } from '../basket/basket.module';
 
 
 
@@ -14,9 +16,10 @@ import { ShopRoutingModule } from './shop-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    ShopRoutingModule
+    ShopRoutingModule,
+    BasketModule
     // RouterModule
   ],
-  // exports: [ShopComponent]
+  exports: [BasketComponent]
 })
 export class ShopModule { }

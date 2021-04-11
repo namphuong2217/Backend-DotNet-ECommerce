@@ -12,6 +12,9 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     BasketRoutingModule,
     SharedModule
+  ],
+  exports : [
+    BasketComponent
   ]
 })
 export class BasketModule { }

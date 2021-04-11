@@ -13,7 +13,7 @@ namespace Core.Interfaces
         Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
         Task<int> CountAsync(ISpecification<T> spec);
 
-        //    Unit of work pattern
+        // methods to support updating (Unit of work pattern)
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
