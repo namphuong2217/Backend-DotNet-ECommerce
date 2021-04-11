@@ -14,6 +14,23 @@ Environment used:
 * .NET 5.0
 * VS Code
 
+#### Database Schema
+
+![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/Car%20Configurator%20Final.png)
+
+#### Frontend Store Overview
+
+![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/Store1.png)
+![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/Store2.png)
+
+#### API Endpoints and Data Models
+
+![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/Swagger1.png)
+![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/Swagger2.png)
+![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/Swagger3.png
+![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/Swagger4.png)
+
+
 ## How it works
 
 The application uses Spring boot (Web, JPA, Postgresql, Lombok)
