@@ -13,6 +13,8 @@ Environment used:
 
 * .NET 5.0
 * VS Code
+* Dotnet CLI, EF Migrations,
+
 
 #### Database Schema
 
@@ -27,44 +29,48 @@ Environment used:
 
 ![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/Swagger1.png)
 ![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/Swagger2.png)
-![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/Swagger3.png
+![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/Swagger3.png)
 ![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/Swagger4.png)
 
 
 ## How it works
 
-The application uses Spring boot (Web, JPA, Postgresql, Lombok)
+* API-Core-Infrastructure architecture
 
-* Use the idea of Three-Layer Architecture Design to separate the business term and infrastruture term
+![images](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Documentation/ApplicationArchitecture.png)
 
-The application is built in 3 layer architecture: [Controller Layer](https://github.com/namphuong2217/Social-Blogging-Platform/tree/main/src/main/java/com/personalproject/socialbloggingplatform/controller), [Service Layer](https://github.com/namphuong2217/Social-Blogging-Platform/tree/main/src/main/java/com/personalproject/socialbloggingplatform/service), [Repository Layer](https://github.com/namphuong2217/Social-Blogging-Platform/tree/main/src/main/java/com/personalproject/socialbloggingplatform/repository)
-
-* Use JPA to implement the Data Mapper pattern for persistence to database.
+The application is built in 3 layer architecture: [API Project](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/API), [Core Project](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core), [Infrastructure Project](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Infrastructure)
 
 * Use Data Transfer Object to separate the read model data and write model data.
 
+[DTOs](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/API/Dtos)
+
 Code organized as follows:
 
-1. [``Controller Layer``](https://github.com/namphuong2217/Social-Blogging-Platform/tree/main/src/main/java/com/personalproject/socialbloggingplatform/controller) responsible handlers for coming requests from client
-2. [``Service Layer``](https://github.com/namphuong2217/Social-Blogging-Platform/tree/main/src/main/java/com/personalproject/socialbloggingplatform/service) is the business/logic layers
-3. [``Repository Layer``](https://github.com/namphuong2217/Social-Blogging-Platform/tree/main/src/main/java/com/personalproject/socialbloggingplatform/repository) is the Persistence/Data Access Layer
-4. [``model``](https://github.com/namphuong2217/Social-Blogging-Platform/tree/main/src/main/java/com/personalproject/socialbloggingplatform/model), [``dto``](https://github.com/namphuong2217/Social-Blogging-Platform/tree/main/src/main/java/com/personalproject/socialbloggingplatform/dto) are the business models including entities and DTOs
-
-6. [``exception``](https://github.com/namphuong2217/Social-Blogging-Platform/tree/main/src/main/java/com/personalproject/socialbloggingplatform/exception) is global custom exception to handle input invalidation, other exceptions and default exception handling.
+1. [``API Project``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/API) responsible [handlers/controllers](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/API/Controllers) for coming requests from client
+2. [``Core Project``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core) responsible for entities/data models.
+3. [``Infrastructure Project``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Infrastructure) responsible for accessing database and processing data
+4. [``Entities``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core/Entities), [``DTOs``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/API/Dtos)
+5. [``Auto Mapper``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Helpers/MappingProfiles.cs) map entities and DTOs
+6. [``Repository Pattern``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Core/Interfaces/IGenericRepository.cs) decouple code from data access, minimize duplicate query logic 
+[``IGenericRepository``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Core/Interfaces/IGenericRepository.cs)
+[``GenericRepository``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Infrastructure/Data/GenericRepository.cs)
+6. [``Specification Pattern``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core/Specifications) along with [``Repository Pattern``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Core/Interfaces/IGenericRepository.cs) to describe query in an object and implement advanced queries like OrderBy, Asc/Desc, Sorting on client's side
+7. [``Unit Of Work pattern``] handles complex query involving more than one data table in database
+[``UnitOfWork Interface``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Core/Interfaces/IUnitOfWork.cs)
+[``UnitOfWork Implementation``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Infrastructure/Data/UnitOfWork.cs)
+8. Use Redis in memory database to manage user basket/shopping cart functionality [``BasketController``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Controllers/BasketController.cs), [``BasketRepository``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Infrastructure/Data/BasketRepository.cs)
 
 ## Security
 
-Integration with Spring Security and add other filter for JWT token process.
+Implement [``User Identity``] with ASPNET Framework user manager package [``AppUser``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core/Entities/Identity), [``UserManagerExtensions``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Extensions/UserManagerExtensions.cs), [``AccountController``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Controllers/AccountController.cs)
 
-The secret key is stored in application.properties.
-
-[``security``](https://github.com/namphuong2217/Social-Blogging-Platform/tree/main/src/main/java/com/personalproject/socialbloggingplatform/security), [``config``](https://github.com/namphuong2217/Social-Blogging-Platform/tree/main/src/main/java/com/personalproject/socialbloggingplatform/config) handle security of API Endpoints
 
 ## Database
 
-Use Postgresql database, can be changed easily in the [``application.properties``](https://github.com/namphuong2217/Social-Blogging-Platform/blob/main/src/main/resources/application.properties) for any other database.
+Currently use Sqlite for development
 
-## Testing API - Demo Client with [Insomnia](https://insomnia.rest/)
+## Testing API with Postman
 
 * API Request Collection
 
