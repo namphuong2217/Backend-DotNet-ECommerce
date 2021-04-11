@@ -57,7 +57,7 @@ Code organized as follows:
 [``UnitOfWork Interface``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Core/Interfaces/IUnitOfWork.cs), 
 [``UnitOfWork Implementation``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Infrastructure/Data/UnitOfWork.cs)
 8. Use Redis in memory database to manage user basket/shopping cart functionality [``BasketController``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Controllers/BasketController.cs), [``BasketRepository``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Infrastructure/Data/BasketRepository.cs), [``BasketItem``](https://github.com/namphuong2217/Computacenter-Interview-Task/blob/main/Core/Entities/BasketItem.cs), [``CustomerBasket``](https://github.com/namphuong2217/Computacenter-Interview-Task/blob/main/Core/Entities/CustomerBasket.cs)
-9. Implemetation handles saving an order [``OrderAggregate``](https://github.com/namphuong2217/Computacenter-Interview-Task/tree/main/Core/Entities/OrderAggregate), [``OrderService``](https://github.com/namphuong2217/Computacenter-Interview-Task/blob/main/Infrastructure/Services/OrderService.cs), [``OrdersController``](https://github.com/namphuong2217/Computacenter-Interview-Task/blob/main/API/Controllers/OrdersController.cs), 
+9. Implemetation handles saving an order [``OrderAggregate``](https://github.com/namphuong2217/Computacenter-Interview-Task/tree/main/Core/Entities/OrderAggregate), [``OrderService``](https://github.com/namphuong2217/Computacenter-Interview-Task/blob/main/Infrastructure/Services/OrderService.cs), [``OrdersController``](https://github.com/namphuong2217/Computacenter-Interview-Task/blob/main/API/Controllers/OrdersController.cs)
 
 ## SecurityCustomerBasket
 
