@@ -8,10 +8,12 @@ A backend REST services for a Car Configurator site.
 Aufgabenstellung:
 Sie wurden damit beauftragt einen Car-Konfigurator zu entwickeln, welcher die Konfiguration eines Autos mit den folgenden
 Optionen ermöglicht:
-· Motorleistung
-· Lackierung
-· Felgen
-· Sonderausstattungen
+
+* Motorleistung
+* Lackierung
+* Felgen
+* Sonderausstattungen
+* 
 Jede Veränderung an der Konfiguration soll sich unmittelbar und ohne Page-Refresh auf den angezeigten Preis auswirken. Am
 Ende der Konfiguration soll eine Zusammenfassung angezeigt und die Bestellung abgesendet werden können. Zudem soll eine
 URL generiert werden, mit dem der Benutzer jederzeit Zugriff auf die gewählte Konfiguration hat. Sowohl die
