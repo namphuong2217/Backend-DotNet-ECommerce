@@ -85,7 +85,7 @@ Currently use Sqlite for development
 
 ## Some testings with Postman
 
-* Query all products
+* Query all products with pagination
 
 ![image](https://github.com/namphuong2217/Computacenter-Interview-Task/blob/main/Documentation/PostmanProducts.png)
 
