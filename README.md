@@ -74,7 +74,7 @@ Code organized as follows:
 8. Use Redis in memory database to manage user basket/shopping cart functionality [``BasketController``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Controllers/BasketController.cs), [``BasketRepository``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Infrastructure/Data/BasketRepository.cs), [``BasketItem``](https://github.com/namphuong2217/Computacenter-Interview-Task/blob/main/Core/Entities/BasketItem.cs), [``CustomerBasket``](https://github.com/namphuong2217/Computacenter-Interview-Task/blob/main/Core/Entities/CustomerBasket.cs)
 9. Implemetation handles saving an order [``OrderAggregate``](https://github.com/namphuong2217/Computacenter-Interview-Task/tree/main/Core/Entities/OrderAggregate), [``OrderService``](https://github.com/namphuong2217/Computacenter-Interview-Task/blob/main/Infrastructure/Services/OrderService.cs), [``OrdersController``](https://github.com/namphuong2217/Computacenter-Interview-Task/blob/main/API/Controllers/OrdersController.cs)
 
-## SecurityCustomerBasket
+## Security
 
 Implement ``User Identity`` with ASP .NET Framework user manager package [``AppUser``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core/Entities/Identity), [``UserManagerExtensions``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Extensions/UserManagerExtensions.cs), [``AccountController``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/API/Controllers/AccountController.cs), [``TokeService for managing JWT``](https://github.com/namphuong2217/Computacenter-Interview-Task/blob/main/Infrastructure/Services/TokenService.cs)
 
