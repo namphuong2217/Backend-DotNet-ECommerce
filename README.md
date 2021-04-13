@@ -1,6 +1,6 @@
 ![images](https://github.com/gothinkster/aspnetcore-realworld-example-app/blob/master/logo.png)
 
-# Computacenter Interview Tasks (70% complete)
+# Computacenter Interview Tasks (Backend 100%, Frontend 60% complete)
 
 A backend REST services for a Car Configurator site.
 
