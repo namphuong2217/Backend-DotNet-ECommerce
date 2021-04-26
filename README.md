@@ -66,7 +66,7 @@ Code organized as follows:
 6. ``Repository Pattern`` decouple code from data access, minimize duplicate query logic 
 [``IGenericRepository``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Core/Interfaces/IGenericRepository.cs)
 [``GenericRepository``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Infrastructure/Data/GenericRepository.cs)
-6. [``Specification Pattern``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core/Specifications) along with ``Repository Pattern`` describe query in an object and implement advanced queries like OrderBy, Asc/Desc, Sorting on client's side
+6. [``Specification Pattern``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/tree/main/Core/Specifications) along with ``Repository Pattern`` describe query in an object and implement advanced functionalities like Filtering, Searching and Pagination as well as queries like OrderBy, Asc/Desc, Sorting on client's side
 7. ``Unit Of Work pattern`` handles complex query involving more than one data table in database
 [``UnitOfWork Interface``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Core/Interfaces/IUnitOfWork.cs), 
 [``UnitOfWork Implementation``](https://github.com/namphuong2217/Backend-DotNet-ECommerce/blob/main/Infrastructure/Data/UnitOfWork.cs)
