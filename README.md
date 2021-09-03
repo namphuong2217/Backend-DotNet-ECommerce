@@ -1,6 +1,6 @@
 ![images](https://github.com/gothinkster/aspnetcore-realworld-example-app/blob/master/logo.png)
 
-# Backend 100%, Frontend 60% complete
+# Backend 100%, Frontend 60%
 
 A backend REST services for a Car Configurator site.
 
